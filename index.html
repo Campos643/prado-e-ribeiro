@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DCPR Santa Casa SP - Transformando Vidas</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+
+<link href="style.css" rel="stylesheet"/></head>
+<body>
+<!-- Header -->
+<header class="header" id="header">
+<div class="container">
+<div class="header-content">
+<a class="logo" href="#">
+<span class="logo-text">DCPR Santa Casa SP</span>
+</a>
+<nav class="nav" id="nav">
+<a class="nav-link" href="#inicio">Início</a>
+<a class="nav-link" href="#sobre">Sobre Nós</a>
+<a class="nav-link" href="#projetos">Projetos</a>
+<a class="nav-link" href="#eventos">Eventos</a>
+<a class="nav-link" href="#ajudar">Como Ajudar</a>
+<a class="nav-link" href="#transparencia">Transparência</a>
+<a class="nav-link" href="#contato">Contato</a>
+</nav>
+<button class="btn btn-primary btn-header" onclick="openDonationModal()">Doar Agora</button>
+<button aria-label="Menu" class="mobile-menu-btn" id="mobileMenuBtn">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero" id="inicio">
+<video 
+  autoplay 
+  muted 
+  loop 
+  playsinline 
+  class="hero-video"
+  poster="/placeholder.svg?height=800&width=1920"
+>
+  <!-- Changed video source from Pexels URL to local assets folder -->
+  <source src="assets/dna-video.mp4" type="video/mp4">
+</video>
+<div class="hero-overlay"></div>
+<img alt="Voluntários ajudando a comunidade" class="hero-image" src="/placeholder.svg?height=800&amp;width=1920"/>
+<div class="container">
+<div class="hero-content">
+<h1 class="hero-title">Transformando Vidas com Amor e Solidariedade</h1>
+<p class="hero-subtitle">Juntos, construímos um futuro melhor para quem mais precisa</p>
+<div class="hero-buttons">
+<button class="btn btn-primary btn-large" onclick="openDonationModal()">Fazer uma Doação</button>
+<a class="btn btn-secondary btn-large" href="#sobre">Conheça Nosso Trabalho</a>
+</div>
+<div class="hero-stats">
+<div class="stat-item">
+<div class="stat-number">15.000+</div>
+<div class="stat-label">Vidas Impactadas</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">50+</div>
+<div class="stat-label">Projetos Ativos</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">500+</div>
+<div class="stat-label">Voluntários</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- News Section -->
+<!-- Seção de notícia principal adicionada no topo -->
+<section class="news-section" id="noticias">
+<div class="container">
+<article class="news-headline">
+<img alt="Pesquisa em Biomedicina" class="news-image" src="/placeholder.svg?height=300&amp;width=500"/>
+<div class="news-content">
+<span class="news-label">📰 Destaque</span>
+<h2 class="news-title">Avanços em Pesquisa de Biomedicina Transformam Tratamentos</h2>
+<p class="news-excerpt">Nossa instituição anuncia resultados significativos em estudos de biomedicina que prometem revolucionar o tratamento de doenças crônicas, trazendo esperança para milhares de pacientes.</p>
+<div class="news-meta">
+<span>📅 4 de novembro de 2025</span>
+<span>✍️ Equipe de Comunicação</span>
+</div>
+<a class="news-link" href="#contato">
+                        Saiba Mais →
+                    </a>
+</div>
+</article>
+</div>
+</section>
+<!-- About Section -->
+<section class="section section-light" id="sobre">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Sobre Nós</h2>
+<p class="section-description">Conheça nossa história, missão e valores que guiam nosso trabalho</p>
+</div>
+<div class="about-grid">
+<div class="about-card">
+<div class="about-icon">🎯</div>
+<h3 class="about-card-title">Nossa Missão</h3>
+<p class="about-card-text">Promover ações humanitárias e sociais que transformam vidas, oferecendo suporte integral às famílias em situação de vulnerabilidade através de projetos sustentáveis e parcerias estratégicas.</p>
+</div>
+<div class="about-card">
+<div class="about-icon">👁️</div>
+<h3 class="about-card-title">Nossa Visão</h3>
+<p class="about-card-text">Ser referência em assistência social no Brasil, reconhecida pela excelência no atendimento, transparência na gestão e impacto positivo duradouro nas comunidades que servimos.</p>
+</div>
+<div class="about-card">
+<div class="about-icon">💎</div>
+<h3 class="about-card-title">Nossos Valores</h3>
+<ul class="values-list">
+<li>Solidariedade e empatia</li>
+<li>Transparência e ética</li>
+<li>Respeito à dignidade humana</li>
+<li>Compromisso com resultados</li>
+<li>Inovação social</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="section" id="projetos">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Nossos Projetos</h2>
+<p class="section-description">Conheça as iniciativas que estão transformando vidas</p>
+</div>
+<div class="carousel-container">
+<button aria-label="Anterior" class="carousel-btn carousel-btn-prev" id="carouselPrev">‹</button>
+<div class="carousel" id="projectsCarousel">
+<div class="project-card">
+<img alt="Alimentação Solidária" class="project-image" src="/placeholder.svg?height=300&amp;width=400"/>
+<div class="project-content">
+<span class="project-badge project-badge-active">Em Andamento</span>
+<h3 class="project-title">Alimentação Solidária</h3>
+<p class="project-description">Distribuição de refeições nutritivas para famílias em situação de vulnerabilidade, garantindo segurança alimentar e dignidade.</p>
+<div class="project-meta">
+<span class="project-meta-item">📍 São Paulo, SP</span>
+<span class="project-meta-item">👥 2.500 beneficiados</span>
+</div>
+</div>
+</div>
+<div class="project-card">
+<img alt="Saúde para Todos" class="project-image" src="/placeholder.svg?height=300&amp;width=400"/>
+<div class="project-content">
+<span class="project-badge project-badge-active">Em Andamento</span>
+<h3 class="project-title">Saúde para Todos</h3>
+<p class="project-description">Atendimento médico gratuito, exames e acompanhamento de saúde para comunidades carentes, promovendo bem-estar e prevenção.</p>
+<div class="project-meta">
+<span class="project-meta-item">📍 São Paulo, SP</span>
+<span class="project-meta-item">👥 1.800 beneficiados</span>
+</div>
+</div>
+</div>
+<div class="project-card">
+<img alt="Educação Transforma" class="project-image" src="/placeholder.svg?height=300&amp;width=400"/>
+<div class="project-content">
+<span class="project-badge project-badge-active">Em Andamento</span>
+<h3 class="project-title">Educação Transforma</h3>
+<p class="project-description">Reforço escolar, cursos profissionalizantes e atividades culturais para crianças e jovens, construindo um futuro melhor.</p>
+<div class="project-meta">
+<span class="project-meta-item">📍 São Paulo, SP</span>
+<span class="project-meta-item">👥 800 beneficiados</span>
+</div>
+</div>
+</div>
+<div class="project-card">
+<img alt="Acolhimento ao Idoso" class="project-image" src="/placeholder.svg?height=300&amp;width=400"/>
+<div class="project-content">
+<span class="project-badge project-badge-planned">Planejado</span>
+<h3 class="project-title">Acolhimento ao Idoso</h3>
+<p class="project-description">Centro de convivência e cuidados para idosos em situação de vulnerabilidade, oferecendo atividades, saúde e companhia.</p>
+<div class="project-meta">
+<span class="project-meta-item">📍 São Paulo, SP</span>
+<span class="project-meta-item">👥 300 beneficiados (previsão)</span>
+</div>
+</div>
+</div>
+</div>
+<button aria-label="Próximo" class="carousel-btn carousel-btn-next" id="carouselNext">›</button>
+</div>
+<div class="carousel-dots" id="carouselDots"></div>
+</div>
+</section>
+<!-- Events Section -->
+<section class="section section-light" id="eventos">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Próximos Eventos</h2>
+<p class="section-description">Participe de nossas ações e faça a diferença</p>
+</div>
+<div class="events-list">
+<div class="event-card">
+<div class="event-date">
+<div class="event-day">15</div>
+<div class="event-month">MAR</div>
+</div>
+<div class="event-content">
+<h3 class="event-title">Campanha de Arrecadação de Alimentos</h3>
+<p class="event-description">Grande mobilização para arrecadar alimentos não perecíveis para distribuição às famílias assistidas.</p>
+<div class="event-meta">
+<span class="event-meta-item">📍 Praça da Sé, São Paulo</span>
+<span class="event-meta-item">🕐 09:00 - 17:00</span>
+</div>
+<button class="btn btn-secondary btn-small">Quero Participar</button>
+</div>
+</div>
+<div class="event-card">
+<div class="event-date">
+<div class="event-day">22</div>
+<div class="event-month">MAR</div>
+</div>
+<div class="event-content">
+<h3 class="event-title">Mutirão de Saúde</h3>
+<p class="event-description">Atendimento médico gratuito, exames e orientações de saúde para a comunidade.</p>
+<div class="event-meta">
+<span class="event-meta-item">📍 Santa Casa de São Paulo</span>
+<span class="event-meta-item">🕐 08:00 - 16:00</span>
+</div>
+<button class="btn btn-secondary btn-small">Quero Participar</button>
+</div>
+</div>
+<div class="event-card">
+<div class="event-date">
+<div class="event-day">05</div>
+<div class="event-month">ABR</div>
+</div>
+<div class="event-content">
+<h3 class="event-title">Jantar Beneficente</h3>
+<p class="event-description">Evento especial para arrecadação de fundos com jantar, música ao vivo e leilão solidário.</p>
+<div class="event-meta">
+<span class="event-meta-item">📍 Salão Nobre Santa Casa</span>
+<span class="event-meta-item">🕐 19:00 - 23:00</span>
+</div>
+<button class="btn btn-secondary btn-small">Quero Participar</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How to Help Section -->
+<!-- Seção de voluntariado removida, deixando apenas as 3 opções principais -->
+<section class="section" id="ajudar">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Como Você Pode Ajudar</h2>
+<p class="section-description">Existem várias formas de fazer a diferença</p>
+</div>
+<div class="help-grid">
+<div class="help-card">
+<div class="help-icon">💰</div>
+<h3 class="help-title">Faça uma Doação</h3>
+<p class="help-description">Sua contribuição financeira nos ajuda a manter e expandir nossos projetos sociais.</p>
+<button class="btn btn-primary" onclick="openDonationModal()">Doar Agora</button>
+</div>
+<div class="help-card">
+<div class="help-icon">🤝</div>
+<h3 class="help-title">Seja Voluntário</h3>
+<p class="help-description">Doe seu tempo e talento para transformar vidas. Entre em contato conosco para conhecer as oportunidades.</p>
+<button class="btn btn-secondary" onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">Fale Conosco</button>
+</div>
+<div class="help-card">
+<div class="help-icon">🏢</div>
+<h3 class="help-title">Parcerias Corporativas</h3>
+<p class="help-description">Empresas podem apoiar nossos projetos através de parcerias estratégicas e responsabilidade social.</p>
+<button class="btn btn-secondary" onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">Fale Conosco</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Transparency Section -->
+<section class="section section-light" id="transparencia">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Transparência</h2>
+<p class="section-description">Prestação de contas e resultados do nosso trabalho</p>
+</div>
+<div class="transparency-stats">
+<div class="transparency-stat">
+<div class="transparency-number">R$ 2,5M</div>
+<div class="transparency-label">Arrecadado em 2024</div>
+</div>
+<div class="transparency-stat">
+<div class="transparency-number">85%</div>
+<div class="transparency-label">Investido em Projetos</div>
+</div>
+<div class="transparency-stat">
+<div class="transparency-number">15.000+</div>
+<div class="transparency-label">Pessoas Beneficiadas</div>
+</div>
+<div class="transparency-stat">
+<div class="transparency-number">50+</div>
+<div class="transparency-label">Projetos Realizados</div>
+</div>
+</div>
+<div class="reports-section">
+<h3 class="reports-title">Relatórios e Documentos</h3>
+<div class="reports-grid">
+<div class="report-card">
+<div class="report-icon">📄</div>
+<div class="report-content">
+<h4 class="report-title">Relatório Anual 2024</h4>
+<p class="report-description">Balanço completo das atividades e resultados</p>
+<a class="report-link" href="#">Baixar PDF</a>
+</div>
+</div>
+<div class="report-card">
+<div class="report-icon">💼</div>
+<div class="report-content">
+<h4 class="report-title">Demonstrativo Financeiro</h4>
+<p class="report-description">Receitas, despesas e investimentos</p>
+<a class="report-link" href="#">Baixar PDF</a>
+</div>
+</div>
+<div class="report-card">
+<div class="report-icon">📊</div>
+<div class="report-content">
+<h4 class="report-title">Impacto Social 2024</h4>
+<p class="report-description">Métricas e histórias de transformação</p>
+<a class="report-link" href="#">Baixar PDF</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="section" id="contato">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Entre em Contato</h2>
+<p class="section-description">Estamos aqui para responder suas dúvidas</p>
+</div>
+<div class="contact-container">
+<div class="contact-info">
+<h3 class="contact-info-title">Informações de Contato</h3>
+<div class="contact-item">
+<div class="contact-icon">📍</div>
+<div>
+<div class="contact-label">Endereço</div>
+<div class="contact-value">Rua Dr. Cesário Mota Júnior, 112<br/>Santa Cecília, São Paulo - SP</div>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-icon">📞</div>
+<div>
+<div class="contact-label">Telefone</div>
+<div class="contact-value">(11) 2176-7000</div>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-icon">✉️</div>
+<div>
+<div class="contact-label">E-mail</div>
+<div class="contact-value">contato@dcprsantacasa.org.br</div>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-icon">🕐</div>
+<div>
+<div class="contact-label">Horário de Atendimento</div>
+<div class="contact-value">Segunda a Sexta: 8h às 18h<br/>Sábado: 8h às 12h</div>
+</div>
+</div>
+</div>
+<form class="form contact-form" id="contactForm">
+<div class="form-group">
+<label class="form-label" for="contactName">Nome Completo *</label>
+<input class="form-input" id="contactName" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label" for="contactEmail">E-mail *</label>
+<input class="form-input" id="contactEmail" required="" type="email"/>
+</div>
+<div class="form-group">
+<label class="form-label" for="contactSubject">Assunto *</label>
+<input class="form-input" id="contactSubject" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label" for="contactMessage">Mensagem *</label>
+<textarea class="form-input form-textarea" id="contactMessage" required="" rows="5"></textarea>
+</div>
+<button class="btn btn-primary" type="submit">Enviar Mensagem</button>
+<div class="form-success" id="contactSuccess">
+                        ✓ Mensagem enviada com sucesso! Responderemos em breve.
+                    </div>
+</form>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div class="footer-section">
+<h4 class="footer-title">DCPR Santa Casa SP</h4>
+<p class="footer-text">Transformando vidas através da solidariedade e do amor ao próximo desde 1950.</p>
+</div>
+<div class="footer-section">
+<h4 class="footer-title">Links Rápidos</h4>
+<ul class="footer-links">
+<li><a href="#inicio">Início</a></li>
+<li><a href="#sobre">Sobre Nós</a></li>
+<li><a href="#projetos">Projetos</a></li>
+<li><a href="#eventos">Eventos</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h4 class="footer-title">Como Ajudar</h4>
+<ul class="footer-links">
+<li><a href="#" onclick="openDonationModal(); return false;">Fazer Doação</a></li>
+<li><a href="#contato">Entre em Contato</a></li>
+<li><a href="#ajudar">Parcerias</a></li>
+<li><a href="#transparencia">Transparência</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h4 class="footer-title">Contato</h4>
+<ul class="footer-contact">
+<li>📍 Rua Dr. Cesário Mota Júnior, 112</li>
+<li>📞 (11) 2176-7000</li>
+<li>✉️ contato@dcprsantacasa.org.br</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 DCPR Santa Casa SP. Todos os direitos reservados.</p>
+<div class="footer-bottom-links">
+<a href="#">Política de Privacidade</a>
+<a href="#">Termos de Uso</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Donation Modal -->
+<div class="modal" id="donationModal">
+<div class="modal-overlay" onclick="closeDonationModal()"></div>
+<div class="modal-content">
+<button aria-label="Fechar" class="modal-close" onclick="closeDonationModal()">×</button>
+<h2 class="modal-title">Faça sua Doação</h2>
+<p class="modal-description">Escolha a forma de pagamento que preferir</p>
+<div class="donation-tabs">
+<button class="donation-tab active" data-tab="pix" onclick="switchDonationTab('pix')">PIX</button>
+<button class="donation-tab" data-tab="bank" onclick="switchDonationTab('bank')">Transferência</button>
+<button class="donation-tab" data-tab="card" onclick="switchDonationTab('card')">Cartão</button>
+</div>
+<div class="donation-content">
+<div class="donation-panel active" id="pix-panel">
+<div class="donation-amounts">
+<button class="amount-btn" onclick="selectAmount(50)">R$ 50</button>
+<button class="amount-btn" onclick="selectAmount(100)">R$ 100</button>
+<button class="amount-btn" onclick="selectAmount(200)">R$ 200</button>
+<button class="amount-btn" onclick="selectAmount(500)">R$ 500</button>
+</div>
+<div class="form-group">
+<label class="form-label">Ou digite outro valor</label>
+<input class="form-input" id="customAmount" min="1" placeholder="R$ 0,00" type="number"/>
+</div>
+<div class="pix-info">
+<p><strong>Chave PIX:</strong></p>
+<div class="pix-key">doacao@dcprsantacasa.org.br</div>
+<button class="btn btn-secondary btn-small" onclick="copyPixKey()">Copiar Chave</button>
+</div>
+</div>
+<div class="donation-panel" id="bank-panel">
+<div class="bank-info">
+<p><strong>Dados Bancários:</strong></p>
+<div class="bank-details">
+<p>Banco: Banco do Brasil</p>
+<p>Agência: 1234-5</p>
+<p>Conta Corrente: 12345-6</p>
+<p>CNPJ: 12.345.678/0001-90</p>
+<p>Favorecido: DCPR Santa Casa SP</p>
+</div>
+</div>
+</div>
+<div class="donation-panel" id="card-panel">
+<form class="form" id="cardForm">
+<div class="donation-amounts">
+<button class="amount-btn" onclick="selectAmount(50)" type="button">R$ 50</button>
+<button class="amount-btn" onclick="selectAmount(100)" type="button">R$ 100</button>
+<button class="amount-btn" onclick="selectAmount(200)" type="button">R$ 200</button>
+<button class="amount-btn" onclick="selectAmount(500)" type="button">R$ 500</button>
+</div>
+<div class="form-group">
+<label class="form-label">Valor da Doação *</label>
+<input class="form-input" id="cardAmount" min="1" placeholder="R$ 0,00" required="" type="number"/>
+</div>
+<div class="form-group">
+<label class="form-label">Nome no Cartão *</label>
+<input class="form-input" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Número do Cartão *</label>
+<input class="form-input" maxlength="19" placeholder="0000 0000 0000 0000" required="" type="text"/>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label class="form-label">Validade *</label>
+<input class="form-input" maxlength="5" placeholder="MM/AA" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">CVV *</label>
+<input class="form-input" maxlength="3" placeholder="123" required="" type="text"/>
+</div>
+</div>
+<button class="btn btn-primary" type="submit">Confirmar Doação</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<script defer="True" src="script.js"></script></body>
+</html>
