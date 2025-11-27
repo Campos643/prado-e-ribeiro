@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DCPR Santa Casa SP - Transformando Vidas</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+
+<style>
+:root {
+  /* Updated color scheme: blue primary, red secondary, modern editorial palette */
+  --color-primary: #0052cc;
+  --color-primary-dark: #003d99;
+  --color-secondary: #e63946;
+  --color-accent: #f4a261;
+  --color-success: #2a9d8f;
+  --color-white: #ffffff;
+  --color-light: #f8f9fa;
+  --color-gray-100: #f1f3f5;
+  --color-gray-200: #e9ecef;
+  --color-gray-300: #dee2e6;
+  --color-gray-400: #ced4da;
+  --color-gray-500: #adb5bd;
+  --color-gray-600: #6c757d;
+  --color-gray-700: #495057;
+  --color-gray-800: #343a40;
+  --color-gray-900: #212529;
+  --color-dark: #1a1a2e;
+  --font-primary: "Poppins", sans-serif;
+  --font-secondary: "Open Sans", sans-serif;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-secondary);
+  color: var(--color-gray-800);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 10% 20%, rgba(0, 82, 204, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(230, 57, 70, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(42, 157, 143, 0.01) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-white);
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  gap: 32px;
+}
+
+.logo {
+  text-decoration: none;
+}
+
+.logo-text {
+  font-family: var(--font-primary);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.logo-image {
+  /* Updated logo styling: now circular with white border, shadow, and padding for modern institutional look */
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  background: #fff;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: block;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+/* Update nav link styles for visible active state */
+.nav-link {
+  text-decoration: none;
+  color: var(--color-gray-700);
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+/* Active nav link visible without hover */
+.nav-link-active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.nav-link-active::after {
+  width: 100%;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.btn-secondary {
+  background: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.btn-secondary:hover {
+  background: #cc2a35;
+}
+
+.btn-success {
+  background: var(--color-success);
+  color: var(--color-white);
+}
+
+.btn-success:hover {
+  background: #229178;
+}
+
+.btn-large {
+  padding: 16px 40px;
+  font-size: 16px;
+}
+
+.btn-small {
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+.btn-header {
+  white-space: nowrap;
+}
+
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.mobile-menu-btn span {
+  width: 100%;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.hero {
+  margin-top: 80px;
+  min-height: 800px;
+  background: linear-gradient(135deg, #001a4d 0%, #0052cc 50%, #e63946 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  /* Add smooth transition effect */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 60px), 0 100%);
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--color-white);
+  animation: fadeInDown 0.8s ease;
+}
+
+/* Add hero transition effect to footer */
+.hero-transition {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(0, 82, 204, 0.1) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  font-family: var(--font-primary);
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  margin-bottom: 32px;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  margin-top: 60px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.news-section {
+  background: var(--color-light);
+  padding: 40px 0;
+  border-bottom: 3px solid var(--color-primary);
+  margin-top: 80px;
+  position: relative;
+}
+
+.news-headline {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+}
+
+.news-headline:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.news-image {
+  width: 35%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #0052cc, #e63946);
+}
+
+.news-content {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.news-label {
+  display: inline-block;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.news-title {
+  font-family: var(--font-primary);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-dark);
+  margin-bottom: 12px;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+.news-excerpt {
+  color: var(--color-gray-700);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.news-meta {
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+  color: var(--color-gray-600);
+  margin-bottom: 16px;
+}
+
+.news-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.news-link:hover {
+  gap: 12px;
+  color: var(--color-primary-dark);
+}
+
+.section {
+  padding: 80px 0;
+  position: relative;
+}
+
+/* Add subtle visual continuity elements */
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 82, 204, 0.1), transparent);
+}
+
+.section-light {
+  background: var(--color-light);
+}
+
+.section-light::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 82, 204, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-family: var(--font-primary);
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--color-dark);
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+
+.section-description {
+  font-size: 18px;
+  color: var(--color-gray-600);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.about-card {
+  background: var(--color-white);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  border-top: 4px solid var(--color-primary);
+}
+
+.about-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px);
+}
+
+.about-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.about-card-title {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-dark);
+}
+
+.about-card-text {
+  color: var(--color-gray-700);
+  line-height: 1.8;
+}
+
+.values-list {
+  list-style: none;
+  color: var(--color-gray-700);
+}
+
+.values-list li {
+  padding: 8px 0;
+  padding-left: 24px;
+  position: relative;
+}
+
+.values-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* Added adaptive carousel wrapper for responsive layout based on project count */
+.carousel-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%; /* Added width */
+}
+
+.carousel {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  flex: 1;
+  padding: 8px 0;
+  scrollbar-width: thin;
+  /* Default layout for flexible carousel with automatic detection via JS */
+  width: 100%; /* Added width */
+}
+
+/* Layout for 1-2 projects: centered grid without carousel buttons */
+.carousel.grid-mode {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  justify-content: center;
+  overflow-x: visible;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Hide carousel buttons when grid mode is active */
+.carousel.grid-mode ~ .carousel-btn,
+.carousel-btn.hidden {
+  display: none;
+}
+
+.carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel::-webkit-scrollbar-track {
+  background: var(--color-gray-200);
+  border-radius: 3px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+.project-card {
+  flex: 0 0 calc(33.333% - 16px);
+  background: linear-gradient(135deg, rgba(0, 82, 204, 0.08) 0%, rgba(230, 57, 70, 0.05) 100%);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 82, 204, 0.1);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 82, 204, 0.15);
+}
+
+/* Grid mode card sizing for 1-2 projects */
+.carousel.grid-mode .project-card {
+  flex: 1 1 auto;
+  min-width: 320px;
+  max-width: 100%;
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 82, 204, 0.2);
+  transform: translateY(-8px);
+  border-color: var(--color-primary);
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #0052cc, #e63946);
+}
+
+.project-content {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+
+.project-badge-active {
+  background: rgba(42, 157, 143, 0.2);
+  color: var(--color-success);
+}
+
+.project-badge-planned {
+  background: rgba(244, 162, 97, 0.2);
+  color: var(--color-accent);
+}
+
+.project-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-dark);
+}
+
+.project-description {
+  color: var(--color-gray-700);
+  font-size: 14px;
+  margin-bottom: 12px;
+  flex: 1;
+}
+
+.project-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--color-gray-600);
+}
+
+.project-meta-item {
+  display: flex;
+  gap: 4px;
+}
+
+.carousel-btn {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-md);
+}
+
+.carousel-btn:hover {
+  background: var(--color-primary-dark);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.carousel-btn:active {
+  transform: scale(0.95);
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-gray-300);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.carousel-dot.active {
+  background: var(--color-primary);
+  transform: scale(1.2);
+}
+
+/* Hide dots when using grid mode */
+.carousel.grid-mode ~ .carousel-dots {
+  display: none;
+}
+
+.events-list {
+  display: grid;
+  gap: 24px;
+}
+
+.event-card {
+  display: flex;
+  gap: 24px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.event-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateX(8px);
+}
+
+.event-date {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: var(--color-white);
+  padding: 24px;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+}
+
+.event-day {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.event-month {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+.event-content {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-dark);
+}
+
+.event-description {
+  color: var(--color-gray-700);
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.event-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--color-gray-600);
+  margin-bottom: 12px;
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+/* Updated help cards with theme colors */
+.help-card {
+  background: linear-gradient(135deg, rgba(0, 82, 204, 0.05) 0%, rgba(230, 57, 70, 0.05) 100%);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  border: 2px solid rgba(0, 82, 204, 0.1);
+}
+
+.help-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px);
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, rgba(0, 82, 204, 0.1) 0%, rgba(230, 57, 70, 0.08) 100%);
+}
+
+.help-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.help-title {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-dark);
+}
+
+.help-description {
+  color: var(--color-gray-700);
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-dark);
+  font-size: 14px;
+}
+
+.form-input {
+  padding: 12px 16px;
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  font-family: var(--font-secondary);
+}
+
+.form-success {
+  display: none;
+  background: rgba(42, 157, 143, 0.1);
+  color: var(--color-success);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-success);
+  font-weight: 600;
+  animation: slideIn 0.3s ease;
+}
+
+.form-success.show {
+  display: block;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.transparency-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.transparency-stat {
+  background: var(--color-white);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.transparency-stat:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.transparency-number {
+  font-family: var(--font-primary);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.transparency-label {
+  font-size: 14px;
+  color: var(--color-gray-700);
+  font-weight: 600;
+}
+
+.reports-section {
+  margin-top: 60px;
+}
+
+.reports-title {
+  font-family: var(--font-primary);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--color-dark);
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.report-card {
+  background: var(--color-white);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  display: flex;
+  gap: 16px;
+}
+
+.report-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.report-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.report-content {
+  flex: 1;
+}
+
+.report-title {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-dark);
+}
+
+.report-description {
+  font-size: 13px;
+  color: var(--color-gray-700);
+  margin-bottom: 12px;
+}
+
+.report-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.report-link:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.contact-info-title {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--color-dark);
+}
+
+.contact-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.contact-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.contact-label {
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 4px;
+}
+
+.contact-value {
+  color: var(--color-gray-700);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-light);
+  border-radius: 50%;
+  font-size: 20px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  background: var(--color-primary);
+  transform: translateY(-4px);
+}
+
+.contact-container-simple {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Update form styling with theme */
+.contact-form {
+  background: linear-gradient(135deg, rgba(0, 82, 204, 0.05) 0%, rgba(230, 57, 70, 0.03) 100%);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px rgba(0, 82, 204, 0.1);
+  border: 1px solid rgba(0, 82, 204, 0.1);
+}
+
+.footer {
+  background: var(--color-dark);
+  color: var(--color-white);
+  padding: 60px 0 24px;
+  position: relative;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer-section {
+  animation: fadeInUp 0.6s ease;
+}
+
+.footer-title {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--color-white);
+}
+
+.footer-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+  padding-left: 4px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  font-size: 18px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-social-link:hover {
+  background: var(--color-primary);
+  transform: translateY(-4px);
+}
+
+.footer-contact {
+  list-style: none;
+}
+
+.footer-contact li {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-bottom-links a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-bottom-links a:hover {
+  color: var(--color-primary);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.modal-content {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  z-index: 1;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--color-light);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  color: var(--color-gray-600);
+}
+
+.modal-close:hover {
+  background: var(--color-gray-200);
+  color: var(--color-dark);
+}
+
+.modal-title {
+  font-family: var(--font-primary);
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-dark);
+}
+
+.modal-description {
+  color: var(--color-gray-700);
+  margin-bottom: 32px;
+}
+
+.donation-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid var(--color-gray-200);
+}
+
+.donation-tab {
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--color-gray-600);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: var(--transition);
+}
+
+.donation-tab.active {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.donation-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.donation-panel {
+  display: none;
+}
+
+.donation-panel.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.donation-amounts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.amount-btn {
+  padding: 12px;
+  border: 2px solid var(--color-gray-200);
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--color-gray-700);
+}
+
+.amount-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.amount-btn.selected {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.pix-info {
+  background: var(--color-light);
+  padding: 20px;
+  border-radius: var(--radius-md);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pix-key {
+  background: var(--color-white);
+  padding: 12px;
+  border-radius: var(--radius-md);
+  font-family: monospace;
+  font-size: 14px;
+  margin: 12px 0;
+  word-break: break-all;
+  color: var(--color-dark);
+  font-weight: 600;
+}
+
+.bank-info {
+  background: var(--color-light);
+  padding: 20px;
+  border-radius: var(--radius-md);
+}
+
+.bank-details {
+  background: var(--color-white);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-gray-800);
+}
+
+.bank-details p {
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+  .carousel {
+    gap: 16px;
+  }
+  .project-card {
+    flex: 0 0 calc(50% - 8px);
+  }
+  .donation-amounts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  .nav.active {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--color-white);
+    box-shadow: var(--shadow-lg);
+    padding: 16px 0;
+    z-index: 999;
+  }
+  .nav-link {
+    padding: 12px 24px;
+    border: none;
+  }
+  .nav-link::after {
+    display: none;
+  }
+  .nav-link:hover {
+    background: var(--color-light);
+  }
+  .mobile-menu-btn {
+    display: flex;
+  }
+  .mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+  .header-content {
+    gap: 16px;
+  }
+  .hero-title {
+    font-size: 32px;
+  }
+  .hero-subtitle {
+    font-size: 16px;
+  }
+  .section-title {
+    font-size: 28px;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .news-headline {
+    flex-direction: column;
+  }
+  .news-image {
+    width: 100%;
+    height: 200px;
+  }
+  .news-title {
+    font-size: 24px;
+  }
+  .project-card {
+    flex: 0 0 100%;
+  }
+  .carousel-btn {
+    display: none;
+  }
+  .carousel-dots {
+    display: flex;
+  }
+  .donation-amounts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    gap: 8px;
+  }
+  .logo-text {
+    font-size: 18px;
+  }
+  .btn-header {
+    display: none;
+  }
+  .section {
+    padding: 40px 0;
+  }
+  .section-header {
+    margin-bottom: 32px;
+  }
+  .hero {
+    min-height: 600px;
+    margin-top: 60px;
+    padding: 40px 0;
+  }
+  .hero-title {
+    font-size: 24px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .modal-content {
+    padding: 24px;
+  }
+  .news-content {
+    padding: 20px;
+  }
+  .news-title {
+    font-size: 20px;
+  }
+  .donation-amounts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header class="header" id="header">
+<div class="container">
+<div class="header-content">
+<a class="logo" href="#">
+<!-- Updated logo to use Source URL from provided image -->
+<img alt="DCPR Santa Casa SP" class="logo-image" src="/images/ong-logo.jpg" />
+</a>
+<nav class="nav" id="nav">
+<a class="nav-link nav-link-active" href="#inicio">Início</a>
+<a class="nav-link" href="#sobre">Sobre Nós</a>
+<a class="nav-link" href="#projetos">Projetos</a>
+<a class="nav-link" href="#eventos">Eventos</a>
+<a class="nav-link" href="#ajudar">Como Ajudar</a>
+<a class="nav-link" href="#transparencia">Transparência</a>
+<a class="nav-link" href="#contato">Contato</a>
+</nav>
+<button class="btn btn-primary btn-header" onclick="openDonationModal()">Doar Agora</button>
+<button aria-label="Menu" class="mobile-menu-btn" id="mobileMenuBtn">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="inicio">
+<!-- Updated video source to use Google Drive embed URL -->
+<video 
+  autoplay 
+  muted 
+  loop 
+  playsinline 
+  class="hero-video"
+  poster="/placeholder.svg?height=800&width=1920"
+>
+  <source src="https://drive.google.com/uc?export=download&id=1Kq3auuJg9ugWy8kpDPHj5mlNctgXK7Er" type="video/mp4">
+</video>
+<div class="hero-overlay"></div>
+<img alt="Voluntários ajudando a comunidade" class="hero-image" src="/placeholder.svg?height=800&amp;width=1920"/>
+<div class="container">
+<div class="hero-content">
+<h1 class="hero-title">Impulsionando a Inovação em Biomedicina para Salvar Vidas</h1>
+<p class="hero-subtitle">Juntos, construímos um futuro melhor para quem mais precisa</p>
+<div class="hero-buttons">
+<button class="btn btn-primary btn-large" onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">Entre em Contato</button>
+</div>
+<div class="hero-stats">
+<div class="stat-item">
+<div class="stat-number">15.000+</div>
+<div class="stat-label">Vidas Impactadas</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">50+</div>
+<div class="stat-label">Projetos Ativos</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">500+</div>
+<div class="stat-label">Voluntários</div>
+</div>
+</div>
+<div class="hero-transition"></div>
+</div>
+</div>
+</section>
+
+<!-- News Section -->
+<!-- Seção de notícia principal adicionada no topo -->
+<section class="news-section" id="noticias">
+<div class="container">
+<article class="news-headline">
+<img alt="Pesquisa em Biomedicina" class="news-image" src="/placeholder.svg?height=300&amp;width=500"/>
+<div class="news-content">
+<span class="news-label">📰 Destaque</span>
+<h2 class="news-title">Avanços em Pesquisa de Biomedicina Transformam Tratamentos</h2>
+<p class="news-excerpt">Nossa instituição anuncia resultados significativos em estudos de biomedicina que prometem revolucionar o tratamento de doenças crônicas, trazendo esperança para milhares de pacientes.</p>
+<div class="news-meta">
+<span>📅 4 de novembro de 2025</span>
+<span>✍️ Equipe de Comunicação</span>
+</div>
+<a class="news-link" href="#contato">
+                        Saiba Mais →
+                    </a>
+</div>
+</article>
+</div>
+</section>
+
+<!-- About Section -->
+<section class="section section-light" id="sobre">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Sobre Nós</h2>
+<p class="section-description">Conheça nossa história, missão e valores que guiam nosso trabalho</p>
+</div>
+<div class="about-grid">
+<div class="about-card">
+<h3 class="about-card-title">Nossa Missão</h3>
+<p class="about-card-text">Promover ações humanitárias e sociais que transformam vidas, oferecendo suporte integral às famílias em situação de vulnerabilidade através de projetos sustentáveis e parcerias estratégicas.</p>
+</div>
+<div class="about-card">
+<h3 class="about-card-title">Nossa Visão</h3>
+<p class="about-card-text">Ser referência em assistência social no Brasil, reconhecida pela excelência no atendimento, transparência na gestão e impacto positivo duradouro nas comunidades que servimos.</p>
+</div>
+<div class="about-card">
+<h3 class="about-card-title">Nossos Valores</h3>
+<ul class="values-list">
+<li>Solidariedade e empatia</li>
+<li>Transparência e ética</li>
+<li>Respeito à dignidade humana</li>
+<li>Compromisso com resultados</li>
+<li>Inovação social</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Projects Section -->
+<section class="section" id="projetos">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Nossos Projetos</h2>
+<p class="section-description">Conheça as iniciativas que estão transformando vidas</p>
+</div>
+<!-- Wrapped carousel in adaptive container for responsive layout based on project count -->
+<div class="carousel-wrapper">
+<div class="carousel-container">
+<button aria-label="Anterior" class="carousel-btn carousel-btn-prev" id="carouselPrev">‹</button>
+<div class="carousel" id="projectsCarousel">
+<div class="project-card">
+<img alt="Mini Curso de Escrita Científica" class="project-image" src="/placeholder.svg?height=300&width=400"/>
+<div class="project-content">
+<span class="project-badge project-badge-active">Em Andamento</span>
+<h3 class="project-title">Mini Curso de Escrita Científica</h3>
+<p class="project-description">Desenvolvimento de habilidades em redação científica, metodologia de pesquisa e apresentação de trabalhos acadêmicos para pesquisadores e estudantes.</p>
+<div class="project-meta">
+<span class="project-meta-item">📍 São Paulo, SP</span>
+<span class="project-meta-item">👥 350 beneficiados</span>
+</div>
+</div>
+</div>
+<div class="project-card">
+<img alt="Jornada Acadêmica de Biomedicina" class="project-image" src="/placeholder.svg?height=300&width=400"/>
+<div class="project-content">
+<span class="project-badge project-badge-active">Em Andamento</span>
+<h3 class="project-title">Jornada Acadêmica de Biomedicina</h3>
+<p class="project-description">Programa de mentoria e capacitação em biomedicina, conectando estudantes com profissionais da área e oportunidades de pesquisa e desenvolvimento.</p>
+<div class="project-meta">
+<span class="project-meta-item">📍 São Paulo, SP</span>
+<span class="project-meta-item">👥 500 beneficiados</span>
+</div>
+</div>
+</div>
+</div>
+<button aria-label="Próximo" class="carousel-btn carousel-btn-next" id="carouselNext">›</button>
+</div>
+</div>
+<div class="carousel-dots" id="carouselDots"></div>
+</div>
+</div>
+</section>
+
+<!-- Events Section -->
+<section class="section section-light" id="eventos">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Próximos Eventos</h2>
+<p class="section-description">Participe de nossas ações e faça a diferença</p>
+</div>
+<div class="events-list">
+<div class="event-card">
+<div class="event-date">
+<div class="event-day">15</div>
+<div class="event-month">MAR</div>
+</div>
+<div class="event-content">
+<h3 class="event-title">Campanha de Arrecadação de Alimentos</h3>
+<p class="event-description">Grande mobilização para arrecadar alimentos não perecíveis para distribuição às famílias assistidas.</p>
+<div class="event-meta">
+<span class="event-meta-item">📍 Praça da Sé, São Paulo</span>
+<span class="event-meta-item">🕐 09:00 - 17:00</span>
+</div>
+<button class="btn btn-secondary btn-small">Quero Participar</button>
+</div>
+</div>
+<div class="event-card">
+<div class="event-date">
+<div class="event-day">22</div>
+<div class="event-month">MAR</div>
+</div>
+<div class="event-content">
+<h3 class="event-title">Mutirão de Saúde</h3>
+<p class="event-description">Atendimento médico gratuito, exames e orientações de saúde para a comunidade.</p>
+<div class="event-meta">
+<span class="event-meta-item">📍 Santa Casa de São Paulo</span>
+<span class="event-meta-item">🕐 08:00 - 16:00</span>
+</div>
+<button class="btn btn-secondary btn-small">Quero Participar</button>
+</div>
+</div>
+<div class="event-card">
+<div class="event-date">
+<div class="event-day">05</div>
+<div class="event-month">ABR</div>
+</div>
+<div class="event-content">
+<h3 class="event-title">Jantar Beneficente</h3>
+<p class="event-description">Evento especial para arrecadação de fundos com jantar, música ao vivo e leilão solidário.</p>
+<div class="event-meta">
+<span class="event-meta-item">📍 Salão Nobre Santa Casa</span>
+<span class="event-meta-item">🕐 19:00 - 23:00</span>
+</div>
+<button class="btn btn-secondary btn-small">Quero Participar</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- How to Help Section -->
+<!-- Seção de voluntariado removida, deixando apenas as 3 opções principais -->
+<section class="section" id="ajudar">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Seja nosso parceiro!</h2>
+<p class="section-description">Existem várias formas de fazer a diferença</p>
+</div>
+<div class="help-grid">
+<div class="help-card">
+<div class="help-icon">🏢</div>
+<h3 class="help-title">Parcerias Corporativas</h3>
+<p class="help-description">Empresas podem apoiar nossos projetos através de parcerias estratégicas e responsabilidade social corporativa.</p>
+<button class="btn btn-secondary" onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">Fale Conosco</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Transparency Section -->
+<section class="section section-light" id="transparencia">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Transparência</h2>
+<p class="section-description">Prestação de contas e resultados do nosso trabalho</p>
+</div>
+<div class="transparency-stats">
+<div class="transparency-stat">
+<div class="transparency-number">R$ 2,5M</div>
+<div class="transparency-label">Arrecadado em 2024</div>
+</div>
+<div class="transparency-stat">
+<div class="transparency-number">85%</div>
+<div class="transparency-label">Investido em Projetos</div>
+</div>
+<div class="transparency-stat">
+<div class="transparency-number">15.000+</div>
+<div class="transparency-label">Pessoas Beneficiadas</div>
+</div>
+<div class="transparency-stat">
+<div class="transparency-number">50+</div>
+<div class="transparency-label">Projetos Realizados</div>
+</div>
+</div>
+<div class="reports-section">
+<h3 class="reports-title">Estatuto e Atas</h3>
+<div class="reports-grid">
+<div class="report-card">
+<div class="report-icon">📄</div>
+<div class="report-content">
+<h4 class="report-title">Estatuto 2025 – 2026</h4>
+<p class="report-description">Documento oficial regulador das atividades e governança institucional</p>
+<a class="report-link" href="#">Baixar PDF</a>
+</div>
+</div>
+<div class="report-card">
+<div class="report-icon">📋</div>
+<div class="report-content">
+<h4 class="report-title">Atas de Reuniões Ordinárias 2025 – 2026</h4>
+<p class="report-description">Registro de deliberações e decisões das reuniões ordinárias</p>
+<a class="report-link" href="#">Abrir todas as atas</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section class="section" id="contato">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Entre em Contato</h2>
+<p class="section-description">Estamos aqui para responder suas dúvidas</p>
+</div>
+<div class="contact-container-simple">
+<form class="form contact-form" id="contactForm">
+<div class="form-group">
+<label class="form-label" for="contactName">Nome Completo *</label>
+<input class="form-input" id="contactName" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label" for="contactEmail">E-mail *</label>
+<input class="form-input" id="contactEmail" required="" type="email"/>
+</div>
+<div class="form-group">
+<label class="form-label" for="contactSubject">Assunto *</label>
+<input class="form-input" id="contactSubject" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label" for="contactMessage">Mensagem *</label>
+<textarea class="form-input form-textarea" id="contactMessage" required="" rows="5"></textarea>
+</div>
+<button class="btn btn-primary" type="submit">Enviar Mensagem</button>
+<div class="form-success" id="contactSuccess">
+✓ Mensagem enviada com sucesso! Responderemos em breve.
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div class="footer-section">
+<h4 class="footer-title">DCPR Santa Casa SP</h4>
+<p class="footer-text">Transformando vidas através da solidariedade e do amor ao próximo desde 1950.</p>
+</div>
+<div class="footer-section">
+<h4 class="footer-title">Links Rápidos</h4>
+<ul class="footer-links">
+<li><a href="#inicio">Início</a></li>
+<li><a href="#sobre">Sobre Nós</a></li>
+<li><a href="#projetos">Projetos</a></li>
+<li><a href="#eventos">Eventos</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h4 class="footer-title">Como Ajudar</h4>
+<ul class="footer-links">
+<li><a href="#" onclick="openDonationModal(); return false;">Fazer Doação</a></li>
+<li><a href="#contato">Entre em Contato</a></li>
+<li><a href="#ajudar">Parcerias</a></li>
+<li><a href="#transparencia">Transparência</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h4 class="footer-title">Contato</h4>
+<ul class="footer-contact">
+<li>📍 Rua Dr. Cesário Mota Júnior, 112</li>
+<li>📞 (11) 2176-7000</li>
+<li>✉️ contato@dcprsantacasa.org.br</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 DCPR Santa Casa SP. Todos os direitos reservados.</p>
+<div class="footer-bottom-links">
+<a href="#">Política de Privacidade</a>
+<a href="#">Termos de Uso</a>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Donation Modal -->
+<div class="modal" id="donationModal">
+<div class="modal-overlay" onclick="closeDonationModal()"></div>
+<div class="modal-content">
+<button aria-label="Fechar" class="modal-close" onclick="closeDonationModal()">×</button>
+<h2 class="modal-title">Faça sua Doação</h2>
+<p class="modal-description">Escolha a forma de pagamento que preferir</p>
+<div class="donation-tabs">
+<button class="donation-tab active" data-tab="pix" onclick="switchDonationTab('pix')">PIX</button>
+<button class="donation-tab" data-tab="bank" onclick="switchDonationTab('bank')">Transferência</button>
+<button class="donation-tab" data-tab="card" onclick="switchDonationTab('card')">Cartão</button>
+</div>
+<div class="donation-content">
+<div class="donation-panel active" id="pix-panel">
+<div class="donation-amounts">
+<button class="amount-btn" onclick="selectAmount(50)">R$ 50</button>
+<button class="amount-btn" onclick="selectAmount(100)">R$ 100</button>
+<button class="amount-btn" onclick="selectAmount(200)">R$ 200</button>
+<button class="amount-btn" onclick="selectAmount(500)">R$ 500</button>
+</div>
+<div class="form-group">
+<label class="form-label">Ou digite outro valor</label>
+<input class="form-input" id="customAmount" min="1" placeholder="R$ 0,00" type="number"/>
+</div>
+<div class="pix-info">
+<p><strong>Chave PIX:</strong></p>
+<div class="pix-key">doacao@dcprsantacasa.org.br</div>
+<button class="btn btn-secondary btn-small" onclick="copyPixKey()">Copiar Chave</button>
+</div>
+</div>
+<div class="donation-panel" id="bank-panel">
+<div class="bank-info">
+<p><strong>Dados Bancários:</strong></p>
+<div class="bank-details">
+<p>Banco: Banco do Brasil</p>
+<p>Agência: 1234-5</p>
+<p>Conta Corrente: 12345-6</p>
+<p>CNPJ: 12.345.678/0001-90</p>
+<p>Favorecido: DCPR Santa Casa SP</p>
+</div>
+</div>
+</div>
+<div class="donation-panel" id="card-panel">
+<form class="form" id="cardForm">
+<div class="donation-amounts">
+<button class="amount-btn" onclick="selectAmount(50)" type="button">R$ 50</button>
+<button class="amount-btn" onclick="selectAmount(100)" type="button">R$ 100</button>
+<button class="amount-btn" onclick="selectAmount(200)" type="button">R$ 200</button>
+<button class="amount-btn" onclick="selectAmount(500)" type="button">R$ 500</button>
+</div>
+<div class="form-group">
+<label class="form-label">Valor da Doação *</label>
+<input class="form-input" id="cardAmount" min="1" placeholder="R$ 0,00" required="" type="number"/>
+</div>
+<div class="form-group">
+<label class="form-label">Nome no Cartão *</label>
+<input class="form-input" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Número do Cartão *</label>
+<input class="form-input" maxlength="19" placeholder="0000 0000 0000 0000" required="" type="text"/>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label class="form-label">Validade *</label>
+<input class="form-input" maxlength="5" placeholder="MM/AA" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">CVV *</label>
+<input class="form-input" maxlength="3" placeholder="123" required="" type="text"/>
+</div>
+</div>
+<button class="btn btn-primary" type="submit">Confirmar Doação</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+// Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById("mobileMenuBtn")
+const nav = document.getElementById("nav")
+
+mobileMenuBtn.addEventListener("click", () => {
+  mobileMenuBtn.classList.toggle("active")
+  nav.classList.toggle("active")
+})
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll(".nav-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    mobileMenuBtn.classList.remove("active")
+    nav.classList.remove("active")
+  })
+})
+
+// Smooth Scroll for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault()
+    const target = document.querySelector(this.getAttribute("href"))
+    if (target) {
+      const headerOffset = 80
+      const elementPosition = target.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      })
+    }
+  })
+})
+
+// Header Scroll Effect and Nav Active State Update
+let lastScroll = 0
+const header = document.getElementById("header")
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset
+  const navLinks = document.querySelectorAll(".nav-link")
+
+  navLinks.forEach((link) => {
+    link.classList.remove("nav-link-active")
+  })
+
+  if (currentScroll < 600) {
+    document.querySelector('a[href="#inicio"]').classList.add("nav-link-active")
+  } else if (currentScroll < 1400) {
+    document.querySelector('a[href="#sobre"]').classList.add("nav-link-active")
+  } else if (currentScroll < 2200) {
+    document.querySelector('a[href="#projetos"]').classList.add("nav-link-active")
+  } else if (currentScroll < 3000) {
+    document.querySelector('a[href="#eventos"]').classList.add("nav-link-active")
+  } else if (currentScroll < 3800) {
+    document.querySelector('a[href="#ajudar"]').classList.add("nav-link-active")
+  } else if (currentScroll < 4600) {
+    document.querySelector('a[href="#transparencia"]').classList.add("nav-link-active")
+  } else {
+    document.querySelector('a[href="#contato"]').classList.add("nav-link-active")
+  }
+
+  if (currentScroll > 100) {
+    header.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.15)"
+  } else {
+    header.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)"
+  }
+
+  lastScroll = currentScroll
+})
+
+// Projects Carousel with Adaptive Layout
+const carousel = document.getElementById("projectsCarousel")
+const carouselPrev = document.getElementById("carouselPrev")
+const carouselNext = document.getElementById("carouselNext")
+const carouselDots = document.getElementById("carouselDots")
+
+let currentSlide = 0
+const slides = document.querySelectorAll(".project-card")
+const totalSlides = Math.max(1, slides.length)
+
+function adaptCarouselLayout() {
+  if (totalSlides <= 2) {
+    // Grid mode for 1-2 projects
+    carousel.classList.add("grid-mode")
+    carouselPrev.classList.add("hidden")
+    carouselNext.classList.add("hidden")
+    carouselDots.innerHTML = "" // Clear dots
+  } else {
+    // Carousel mode for 3+ projects
+    carousel.classList.remove("grid-mode")
+    carouselPrev.classList.remove("hidden")
+    carouselNext.classList.remove("hidden")
+    createCarouselDots()
+  }
+}
+
+// Create dots only for carousel mode
+function createCarouselDots() {
+  carouselDots.innerHTML = "" // Clear existing dots
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement("div")
+    dot.classList.add("carousel-dot")
+    if (i === 0) dot.classList.add("active")
+    dot.addEventListener("click", () => goToSlide(i))
+    carouselDots.appendChild(dot)
+  }
+}
+
+function updateCarousel() {
+  if (totalSlides <= 2) return // Skip carousel update in grid mode
+
+  const slideWidth = slides[0].offsetWidth + 24 // width + gap
+  carousel.scrollTo({
+    left: slideWidth * currentSlide,
+    behavior: "smooth",
+  })
+
+  document.querySelectorAll(".carousel-dot").forEach((dot, index) => {
+    dot.classList.toggle("active", index === currentSlide)
+  })
+}
+
+function goToSlide(index) {
+  currentSlide = index
+  updateCarousel()
+}
+
+carouselPrev.addEventListener("click", () => {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides
+  updateCarousel()
+})
+
+carouselNext.addEventListener("click", () => {
+  currentSlide = (currentSlide + 1) % totalSlides
+  updateCarousel()
+})
+
+// Auto-scroll carousel on mobile (carousel mode only)
+let autoScrollInterval
+if (window.innerWidth < 768 && totalSlides > 2) {
+  autoScrollInterval = setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides
+    updateCarousel()
+  }, 5000)
+}
+
+// Initialize layout on page load
+adaptCarouselLayout()
+
+// Handle window resize for responsive behavior
+window.addEventListener("resize", () => {
+  adaptCarouselLayout()
+})
+
+// Contact Form Submission
+const contactForm = document.getElementById("contactForm")
+const contactSuccess = document.getElementById("contactSuccess")
+
+contactForm.addEventListener("submit", (e) => {
+  e.preventDefault()
+
+  // Simulate form submission
+  setTimeout(() => {
+    contactSuccess.classList.add("show")
+    contactForm.reset()
+
+    setTimeout(() => {
+      contactSuccess.classList.remove("show")
+    }, 5000)
+  }, 500)
+})
+
+// Donation Modal
+const donationModal = document.getElementById("donationModal")
+
+function openDonationModal() {
+  donationModal.classList.add("show")
+  document.body.style.overflow = "hidden"
+}
+
+function closeDonationModal() {
+  donationModal.classList.remove("show")
+  document.body.style.overflow = ""
+}
+
+// Close modal on escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && donationModal.classList.contains("show")) {
+    closeDonationModal()
+  }
+})
+
+// Donation Tabs
+function switchDonationTab(tabName) {
+  // Update tabs
+  document.querySelectorAll(".donation-tab").forEach((tab) => {
+    tab.classList.toggle("active", tab.dataset.tab === tabName)
+  })
+
+  // Update panels
+  document.querySelectorAll(".donation-panel").forEach((panel) => {
+    panel.classList.toggle("active", panel.id === `${tabName}-panel`)
+  })
+}
+
+// Amount Selection
+function selectAmount(amount) {
+  // Remove selected class from all buttons
+  document.querySelectorAll(".amount-btn").forEach((btn) => {
+    btn.classList.remove("selected")
+  })
+
+  // Add selected class to clicked button
+  event.target.classList.add("selected")
+
+  // Update input fields
+  const customAmount = document.getElementById("customAmount")
+  const cardAmount = document.getElementById("cardAmount")
+
+  if (customAmount) customAmount.value = amount
+  if (cardAmount) cardAmount.value = amount
+}
+
+// Copy PIX Key
+function copyPixKey() {
+  const pixKey = "doacao@dcprsantacasa.org.br"
+
+  // Create temporary input
+  const tempInput = document.createElement("input")
+  tempInput.value = pixKey
+  document.body.appendChild(tempInput)
+  tempInput.select()
+  document.execCommand("copy")
+  document.body.removeChild(tempInput)
+
+  // Show feedback
+  const btn = event.target
+  const originalText = btn.textContent
+  btn.textContent = "Copiado!"
+  btn.style.background = "var(--color-success)"
+  btn.style.color = "var(--color-white)"
+
+  setTimeout(() => {
+    btn.textContent = originalText
+    btn.style.background = ""
+    btn.style.color = ""
+  }, 2000)
+}
+
+// Card Form Submission
+const cardForm = document.getElementById("cardForm")
+
+if (cardForm) {
+  cardForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    // Simulate payment processing
+    const btn = cardForm.querySelector('button[type="submit"]')
+    const originalText = btn.textContent
+    btn.textContent = "Processando..."
+    btn.disabled = true
+
+    setTimeout(() => {
+      alert("Doação realizada com sucesso! Obrigado por sua contribuição.")
+      closeDonationModal()
+      cardForm.reset()
+      btn.textContent = originalText
+      btn.disabled = false
+    }, 2000)
+  })
+}
+
+// Intersection Observer for Animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px",
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = "1"
+      entry.target.style.transform = "translateY(0)"
+    }
+  })
+}, observerOptions)
+
+// Observe elements for animation
+document
+  .querySelectorAll(
+    ".about-card, .project-card, .event-card, .help-card, .report-card, .transparency-stat, .news-headline",
+  )
+  .forEach((el) => {
+    el.style.opacity = "0"
+    el.style.transform = "translateY(20px)"
+    el.style.transition = "opacity 0.6s ease, transform 0.6s ease"
+    observer.observe(el)
+  })
+</script>
+</body>
+</html>
