@@ -1,248 +1,300 @@
 // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById("mobileMenuBtn")
-        const nav = document.getElementById("nav")
+const mobileMenuBtn = document.getElementById("mobileMenuBtn")
+const nav = document.getElementById("nav")
 
-        mobileMenuBtn.addEventListener("click", () => {
-          mobileMenuBtn.classList.toggle("active")
-          nav.classList.toggle("active")
-        })
+mobileMenuBtn.addEventListener("click", () => {
+  mobileMenuBtn.classList.toggle("active")
+  nav.classList.toggle("active")
+})
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll(".nav-link").forEach((link) => {
-          link.addEventListener("click", () => {
-            mobileMenuBtn.classList.remove("active")
-            nav.classList.remove("active")
-          })
-        })
+// Close mobile menu when clicking on a link
+document.querySelectorAll(".nav-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    mobileMenuBtn.classList.remove("active")
+    nav.classList.remove("active")
+  })
+})
 
-        // Smooth Scroll for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-          anchor.addEventListener("click", function (e) {
-            e.preventDefault()
-            const target = document.querySelector(this.getAttribute("href"))
-            if (target) {
-              const headerOffset = 80
-              const elementPosition = target.getBoundingClientRect().top
-              const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+// Smooth Scroll for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault()
+    const target = document.querySelector(this.getAttribute("href"))
+    if (target) {
+      const headerOffset = 80
+      const elementPosition = target.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
 
-              window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth",
-              })
-            }
-          })
-        })
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      })
+    }
+  })
+})
 
-        // Header Scroll Effect
-        let lastScroll = 0
-        const header = document.getElementById("header")
+// Header Scroll Effect and Nav Active State Update
+let lastScroll = 0
+const header = document.getElementById("header")
 
-        window.addEventListener("scroll", () => {
-          const currentScroll = window.pageYOffset
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset
+  const navLinks = document.querySelectorAll(".nav-link")
 
-          if (currentScroll > 100) {
-            header.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.15)"
-          } else {
-            header.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)"
-          }
+  navLinks.forEach((link) => {
+    link.classList.remove("nav-link-active")
+  })
 
-          lastScroll = currentScroll
-        })
+  if (currentScroll < 600) {
+    document.querySelector('a[href="#inicio"]').classList.add("nav-link-active")
+  } else if (currentScroll < 1400) {
+    document.querySelector('a[href="#sobre"]').classList.add("nav-link-active")
+  } else if (currentScroll < 2200) {
+    document.querySelector('a[href="#projetos"]').classList.add("nav-link-active")
+  } else if (currentScroll < 3000) {
+    document.querySelector('a[href="#eventos"]').classList.add("nav-link-active")
+  } else if (currentScroll < 3800) {
+    document.querySelector('a[href="#ajudar"]').classList.add("nav-link-active")
+  } else if (currentScroll < 4600) {
+    document.querySelector('a[href="#transparencia"]').classList.add("nav-link-active")
+  } else {
+    document.querySelector('a[href="#contato"]').classList.add("nav-link-active")
+  }
 
-        // Projects Carousel
-        const carousel = document.getElementById("projectsCarousel")
-        const carouselPrev = document.getElementById("carouselPrev")
-        const carouselNext = document.getElementById("carouselNext")
-        const carouselDots = document.getElementById("carouselDots")
+  if (currentScroll > 100) {
+    header.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.15)"
+  } else {
+    header.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)"
+  }
 
-        let currentSlide = 0
-        const slides = document.querySelectorAll(".project-card")
-        const totalSlides = slides.length
+  lastScroll = currentScroll
+})
 
-        // Create dots
-        for (let i = 0; i < totalSlides; i++) {
-          const dot = document.createElement("div")
-          dot.classList.add("carousel-dot")
-          if (i === 0) dot.classList.add("active")
-          dot.addEventListener("click", () => goToSlide(i))
-          carouselDots.appendChild(dot)
-        }
+// Projects Carousel with Adaptive Layout
+const carousel = document.getElementById("projectsCarousel")
+const carouselPrev = document.getElementById("carouselPrev")
+const carouselNext = document.getElementById("carouselNext")
+const carouselDots = document.getElementById("carouselDots")
 
-        const dots = document.querySelectorAll(".carousel-dot")
+let currentSlide = 0
+const slides = document.querySelectorAll(".project-card")
+const totalSlides = Math.max(1, slides.length)
 
-        function updateCarousel() {
-          const slideWidth = slides[0].offsetWidth + 24 // width + gap
-          carousel.scrollTo({
-            left: slideWidth * currentSlide,
-            behavior: "smooth",
-          })
+function adaptCarouselLayout() {
+  if (totalSlides <= 2) {
+    // Grid mode for 1-2 projects
+    carousel.classList.add("grid-mode")
+    carouselPrev.classList.add("hidden")
+    carouselNext.classList.add("hidden")
+    carouselDots.innerHTML = "" // Clear dots
+  } else {
+    // Carousel mode for 3+ projects
+    carousel.classList.remove("grid-mode")
+    carouselPrev.classList.remove("hidden")
+    carouselNext.classList.remove("hidden")
+    createCarouselDots()
+  }
+}
 
-          dots.forEach((dot, index) => {
-            dot.classList.toggle("active", index === currentSlide)
-          })
-        }
+// Create dots only for carousel mode
+function createCarouselDots() {
+  carouselDots.innerHTML = "" // Clear existing dots
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement("div")
+    dot.classList.add("carousel-dot")
+    if (i === 0) dot.classList.add("active")
+    dot.addEventListener("click", () => goToSlide(i))
+    carouselDots.appendChild(dot)
+  }
+}
 
-        function goToSlide(index) {
-          currentSlide = index
-          updateCarousel()
-        }
+function updateCarousel() {
+  if (totalSlides <= 2) return // Skip carousel update in grid mode
 
-        carouselPrev.addEventListener("click", () => {
-          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides
-          updateCarousel()
-        })
+  const slideWidth = slides[0].offsetWidth + 24 // width + gap
+  carousel.scrollTo({
+    left: slideWidth * currentSlide,
+    behavior: "smooth",
+  })
 
-        carouselNext.addEventListener("click", () => {
-          currentSlide = (currentSlide + 1) % totalSlides
-          updateCarousel()
-        })
+  document.querySelectorAll(".carousel-dot").forEach((dot, index) => {
+    dot.classList.toggle("active", index === currentSlide)
+  })
+}
 
-        // Auto-scroll carousel on mobile
-        let autoScrollInterval
-        if (window.innerWidth < 768) {
-          autoScrollInterval = setInterval(() => {
-            currentSlide = (currentSlide + 1) % totalSlides
-            updateCarousel()
-          }, 5000)
-        }
+function goToSlide(index) {
+  currentSlide = index
+  updateCarousel()
+}
 
-        // Contact Form Submission
-        const contactForm = document.getElementById("contactForm")
-        const contactSuccess = document.getElementById("contactSuccess")
+carouselPrev.addEventListener("click", () => {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides
+  updateCarousel()
+})
 
-        contactForm.addEventListener("submit", (e) => {
-          e.preventDefault()
+carouselNext.addEventListener("click", () => {
+  currentSlide = (currentSlide + 1) % totalSlides
+  updateCarousel()
+})
 
-          // Simulate form submission
-          setTimeout(() => {
-            contactSuccess.classList.add("show")
-            contactForm.reset()
+// Auto-scroll carousel on mobile (carousel mode only)
+let autoScrollInterval
+if (window.innerWidth < 768 && totalSlides > 2) {
+  autoScrollInterval = setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides
+    updateCarousel()
+  }, 5000)
+}
 
-            setTimeout(() => {
-              contactSuccess.classList.remove("show")
-            }, 5000)
-          }, 500)
-        })
+// Initialize layout on page load
+adaptCarouselLayout()
 
-        // Donation Modal
-        const donationModal = document.getElementById("donationModal")
+// Handle window resize for responsive behavior
+window.addEventListener("resize", () => {
+  adaptCarouselLayout()
+})
 
-        function openDonationModal() {
-          donationModal.classList.add("show")
-          document.body.style.overflow = "hidden"
-        }
+// Contact Form Submission
+const contactForm = document.getElementById("contactForm")
+const contactSuccess = document.getElementById("contactSuccess")
 
-        function closeDonationModal() {
-          donationModal.classList.remove("show")
-          document.body.style.overflow = ""
-        }
+contactForm.addEventListener("submit", (e) => {
+  e.preventDefault()
 
-        // Close modal on escape key
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape" && donationModal.classList.contains("show")) {
-            closeDonationModal()
-          }
-        })
+  // Simulate form submission
+  setTimeout(() => {
+    contactSuccess.classList.add("show")
+    contactForm.reset()
 
-        // Donation Tabs
-        function switchDonationTab(tabName) {
-          // Update tabs
-          document.querySelectorAll(".donation-tab").forEach((tab) => {
-            tab.classList.toggle("active", tab.dataset.tab === tabName)
-          })
+    setTimeout(() => {
+      contactSuccess.classList.remove("show")
+    }, 5000)
+  }, 500)
+})
 
-          // Update panels
-          document.querySelectorAll(".donation-panel").forEach((panel) => {
-            panel.classList.toggle("active", panel.id === `${tabName}-panel`)
-          })
-        }
+// Donation Modal
+const donationModal = document.getElementById("donationModal")
 
-        // Amount Selection
-        function selectAmount(amount) {
-          // Remove selected class from all buttons
-          document.querySelectorAll(".amount-btn").forEach((btn) => {
-            btn.classList.remove("selected")
-          })
+function openDonationModal() {
+  donationModal.classList.add("show")
+  document.body.style.overflow = "hidden"
+}
 
-          // Add selected class to clicked button
-          event.target.classList.add("selected")
+function closeDonationModal() {
+  donationModal.classList.remove("show")
+  document.body.style.overflow = ""
+}
 
-          // Update input fields
-          const customAmount = document.getElementById("customAmount")
-          const cardAmount = document.getElementById("cardAmount")
+// Close modal on escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && donationModal.classList.contains("show")) {
+    closeDonationModal()
+  }
+})
 
-          if (customAmount) customAmount.value = amount
-          if (cardAmount) cardAmount.value = amount
-        }
+// Donation Tabs
+function switchDonationTab(tabName) {
+  // Update tabs
+  document.querySelectorAll(".donation-tab").forEach((tab) => {
+    tab.classList.toggle("active", tab.dataset.tab === tabName)
+  })
 
-        // Copy PIX Key
-        function copyPixKey() {
-          const pixKey = "doacao@dcprsantacasa.org.br"
+  // Update panels
+  document.querySelectorAll(".donation-panel").forEach((panel) => {
+    panel.classList.toggle("active", panel.id === `${tabName}-panel`)
+  })
+}
 
-          // Create temporary input
-          const tempInput = document.createElement("input")
-          tempInput.value = pixKey
-          document.body.appendChild(tempInput)
-          tempInput.select()
-          document.execCommand("copy")
-          document.body.removeChild(tempInput)
+// Amount Selection
+function selectAmount(amount) {
+  // Remove selected class from all buttons
+  document.querySelectorAll(".amount-btn").forEach((btn) => {
+    btn.classList.remove("selected")
+  })
 
-          // Show feedback
-          const btn = event.target
-          const originalText = btn.textContent
-          btn.textContent = "Copiado!"
-          btn.style.background = "var(--color-success)"
-          btn.style.color = "var(--color-white)"
+  // Add selected class to clicked button
+  event.target.classList.add("selected")
 
-          setTimeout(() => {
-            btn.textContent = originalText
-            btn.style.background = ""
-            btn.style.color = ""
-          }, 2000)
-        }
+  // Update input fields
+  const customAmount = document.getElementById("customAmount")
+  const cardAmount = document.getElementById("cardAmount")
 
-        // Card Form Submission
-        const cardForm = document.getElementById("cardForm")
+  if (customAmount) customAmount.value = amount
+  if (cardAmount) cardAmount.value = amount
+}
 
-        if (cardForm) {
-          cardForm.addEventListener("submit", (e) => {
-            e.preventDefault()
+// Copy PIX Key
+function copyPixKey() {
+  const pixKey = "doacao@dcprsantacasa.org.br"
 
-            // Simulate payment processing
-            const btn = cardForm.querySelector('button[type="submit"]')
-            const originalText = btn.textContent
-            btn.textContent = "Processando..."
-            btn.disabled = true
+  // Create temporary input
+  const tempInput = document.createElement("input")
+  tempInput.value = pixKey
+  document.body.appendChild(tempInput)
+  tempInput.select()
+  document.execCommand("copy")
+  document.body.removeChild(tempInput)
 
-            setTimeout(() => {
-              alert("Doação realizada com sucesso! Obrigado por sua contribuição.")
-              closeDonationModal()
-              cardForm.reset()
-              btn.textContent = originalText
-              btn.disabled = false
-            }, 2000)
-          })
-        }
+  // Show feedback
+  const btn = event.target
+  const originalText = btn.textContent
+  btn.textContent = "Copiado!"
+  btn.style.background = "var(--color-success)"
+  btn.style.color = "var(--color-white)"
 
-        // Intersection Observer for Animations
-        const observerOptions = {
-          threshold: 0.1,
-          rootMargin: "0px 0px -50px 0px",
-        }
+  setTimeout(() => {
+    btn.textContent = originalText
+    btn.style.background = ""
+    btn.style.color = ""
+  }, 2000)
+}
 
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = "1"
-              entry.target.style.transform = "translateY(0)"
-            }
-          })
-        }, observerOptions)
+// Card Form Submission
+const cardForm = document.getElementById("cardForm")
 
-        // Observe elements for animation
-        document.querySelectorAll(".about-card, .project-card, .event-card, .help-card, .report-card, .transparency-stat, .news-headline").forEach((el) => {
-          el.style.opacity = "0"
-          el.style.transform = "translateY(20px)"
-          el.style.transition = "opacity 0.6s ease, transform 0.6s ease"
-          observer.observe(el)
-        })
+if (cardForm) {
+  cardForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    // Simulate payment processing
+    const btn = cardForm.querySelector('button[type="submit"]')
+    const originalText = btn.textContent
+    btn.textContent = "Processando..."
+    btn.disabled = true
+
+    setTimeout(() => {
+      alert("Doação realizada com sucesso! Obrigado por sua contribuição.")
+      closeDonationModal()
+      cardForm.reset()
+      btn.textContent = originalText
+      btn.disabled = false
+    }, 2000)
+  })
+}
+
+// Intersection Observer for Animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px",
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = "1"
+      entry.target.style.transform = "translateY(0)"
+    }
+  })
+}, observerOptions)
+
+// Observe elements for animation
+document
+  .querySelectorAll(
+    ".about-card, .project-card, .event-card, .help-card, .report-card, .transparency-stat, .news-headline",
+  )
+  .forEach((el) => {
+    el.style.opacity = "0"
+    el.style.transform = "translateY(20px)"
+    el.style.transition = "opacity 0.6s ease, transform 0.6s ease"
+    observer.observe(el)
+  })

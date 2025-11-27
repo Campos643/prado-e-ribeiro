@@ -16,10 +16,10 @@
 <div class="container">
 <div class="header-content">
 <a class="logo" href="#">
-<span class="logo-text">DCPR Santa Casa SP</span>
+<img alt="DCPR Santa Casa SP" class="logo-image" src="assets/Ong_Logo.jpg" />
 </a>
 <nav class="nav" id="nav">
-<a class="nav-link" href="#inicio">Início</a>
+<a class="nav-link nav-link-active" href="#inicio">Início</a>
 <a class="nav-link" href="#sobre">Sobre Nós</a>
 <a class="nav-link" href="#projetos">Projetos</a>
 <a class="nav-link" href="#eventos">Eventos</a>
@@ -53,11 +53,10 @@
 <img alt="Voluntários ajudando a comunidade" class="hero-image" src="/placeholder.svg?height=800&amp;width=1920"/>
 <div class="container">
 <div class="hero-content">
-<h1 class="hero-title">Transformando Vidas com Amor e Solidariedade</h1>
+<h1 class="hero-title">Impulsionando a Inovação em Biomedicina para Salvar Vidas</h1>
 <p class="hero-subtitle">Juntos, construímos um futuro melhor para quem mais precisa</p>
 <div class="hero-buttons">
-<button class="btn btn-primary btn-large" onclick="openDonationModal()">Fazer uma Doação</button>
-<a class="btn btn-secondary btn-large" href="#sobre">Conheça Nosso Trabalho</a>
+<button class="btn btn-primary btn-large" onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">Entre em Contato</button>
 </div>
 <div class="hero-stats">
 <div class="stat-item">
@@ -73,6 +72,7 @@
 <div class="stat-label">Voluntários</div>
 </div>
 </div>
+<div class="hero-transition"></div>
 </div>
 </div>
 </section>
@@ -106,17 +106,14 @@
 </div>
 <div class="about-grid">
 <div class="about-card">
-<div class="about-icon">🎯</div>
 <h3 class="about-card-title">Nossa Missão</h3>
 <p class="about-card-text">Promover ações humanitárias e sociais que transformam vidas, oferecendo suporte integral às famílias em situação de vulnerabilidade através de projetos sustentáveis e parcerias estratégicas.</p>
 </div>
 <div class="about-card">
-<div class="about-icon">👁️</div>
 <h3 class="about-card-title">Nossa Visão</h3>
 <p class="about-card-text">Ser referência em assistência social no Brasil, reconhecida pela excelência no atendimento, transparência na gestão e impacto positivo duradouro nas comunidades que servimos.</p>
 </div>
 <div class="about-card">
-<div class="about-icon">💎</div>
 <h3 class="about-card-title">Nossos Valores</h3>
 <ul class="values-list">
 <li>Solidariedade e empatia</li>
@@ -136,61 +133,41 @@
 <h2 class="section-title">Nossos Projetos</h2>
 <p class="section-description">Conheça as iniciativas que estão transformando vidas</p>
 </div>
+<!-- Wrapped carousel in adaptive container for responsive layout based on project count -->
+<div class="carousel-wrapper">
 <div class="carousel-container">
 <button aria-label="Anterior" class="carousel-btn carousel-btn-prev" id="carouselPrev">‹</button>
 <div class="carousel" id="projectsCarousel">
 <div class="project-card">
-<img alt="Alimentação Solidária" class="project-image" src="/placeholder.svg?height=300&amp;width=400"/>
+<img alt="Mini Curso de Escrita Científica" class="project-image" src="/placeholder.svg?height=300&width=400"/>
 <div class="project-content">
 <span class="project-badge project-badge-active">Em Andamento</span>
-<h3 class="project-title">Alimentação Solidária</h3>
-<p class="project-description">Distribuição de refeições nutritivas para famílias em situação de vulnerabilidade, garantindo segurança alimentar e dignidade.</p>
+<h3 class="project-title">Mini Curso de Escrita Científica</h3>
+<p class="project-description">Desenvolvimento de habilidades em redação científica, metodologia de pesquisa e apresentação de trabalhos acadêmicos para pesquisadores e estudantes.</p>
 <div class="project-meta">
 <span class="project-meta-item">📍 São Paulo, SP</span>
-<span class="project-meta-item">👥 2.500 beneficiados</span>
+<span class="project-meta-item">👥 350 beneficiados</span>
 </div>
 </div>
 </div>
 <div class="project-card">
-<img alt="Saúde para Todos" class="project-image" src="/placeholder.svg?height=300&amp;width=400"/>
+<img alt="Jornada Acadêmica de Biomedicina" class="project-image" src="/placeholder.svg?height=300&width=400"/>
 <div class="project-content">
 <span class="project-badge project-badge-active">Em Andamento</span>
-<h3 class="project-title">Saúde para Todos</h3>
-<p class="project-description">Atendimento médico gratuito, exames e acompanhamento de saúde para comunidades carentes, promovendo bem-estar e prevenção.</p>
+<h3 class="project-title">Jornada Acadêmica de Biomedicina</h3>
+<p class="project-description">Programa de mentoria e capacitação em biomedicina, conectando estudantes com profissionais da área e oportunidades de pesquisa e desenvolvimento.</p>
 <div class="project-meta">
 <span class="project-meta-item">📍 São Paulo, SP</span>
-<span class="project-meta-item">👥 1.800 beneficiados</span>
-</div>
-</div>
-</div>
-<div class="project-card">
-<img alt="Educação Transforma" class="project-image" src="/placeholder.svg?height=300&amp;width=400"/>
-<div class="project-content">
-<span class="project-badge project-badge-active">Em Andamento</span>
-<h3 class="project-title">Educação Transforma</h3>
-<p class="project-description">Reforço escolar, cursos profissionalizantes e atividades culturais para crianças e jovens, construindo um futuro melhor.</p>
-<div class="project-meta">
-<span class="project-meta-item">📍 São Paulo, SP</span>
-<span class="project-meta-item">👥 800 beneficiados</span>
-</div>
-</div>
-</div>
-<div class="project-card">
-<img alt="Acolhimento ao Idoso" class="project-image" src="/placeholder.svg?height=300&amp;width=400"/>
-<div class="project-content">
-<span class="project-badge project-badge-planned">Planejado</span>
-<h3 class="project-title">Acolhimento ao Idoso</h3>
-<p class="project-description">Centro de convivência e cuidados para idosos em situação de vulnerabilidade, oferecendo atividades, saúde e companhia.</p>
-<div class="project-meta">
-<span class="project-meta-item">📍 São Paulo, SP</span>
-<span class="project-meta-item">👥 300 beneficiados (previsão)</span>
+<span class="project-meta-item">👥 500 beneficiados</span>
 </div>
 </div>
 </div>
 </div>
 <button aria-label="Próximo" class="carousel-btn carousel-btn-next" id="carouselNext">›</button>
 </div>
+</div>
 <div class="carousel-dots" id="carouselDots"></div>
+</div>
 </div>
 </section>
 <!-- Events Section -->
@@ -254,27 +231,16 @@
 <section class="section" id="ajudar">
 <div class="container">
 <div class="section-header">
-<h2 class="section-title">Como Você Pode Ajudar</h2>
+<h2 class="section-title">Seja nosso parceiro!</h2>
 <p class="section-description">Existem várias formas de fazer a diferença</p>
 </div>
 <div class="help-grid">
 <div class="help-card">
-<div class="help-icon">💰</div>
-<h3 class="help-title">Faça uma Doação</h3>
-<p class="help-description">Sua contribuição financeira nos ajuda a manter e expandir nossos projetos sociais.</p>
-<button class="btn btn-primary" onclick="openDonationModal()">Doar Agora</button>
-</div>
-<div class="help-card">
-<div class="help-icon">🤝</div>
-<h3 class="help-title">Seja Voluntário</h3>
-<p class="help-description">Doe seu tempo e talento para transformar vidas. Entre em contato conosco para conhecer as oportunidades.</p>
-<button class="btn btn-secondary" onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">Fale Conosco</button>
-</div>
-<div class="help-card">
 <div class="help-icon">🏢</div>
 <h3 class="help-title">Parcerias Corporativas</h3>
-<p class="help-description">Empresas podem apoiar nossos projetos através de parcerias estratégicas e responsabilidade social.</p>
+<p class="help-description">Empresas podem apoiar nossos projetos através de parcerias estratégicas e responsabilidade social corporativa.</p>
 <button class="btn btn-secondary" onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">Fale Conosco</button>
+</div>
 </div>
 </div>
 </div>
@@ -305,30 +271,22 @@
 </div>
 </div>
 <div class="reports-section">
-<h3 class="reports-title">Relatórios e Documentos</h3>
+<h3 class="reports-title">Estatuto e Atas</h3>
 <div class="reports-grid">
 <div class="report-card">
 <div class="report-icon">📄</div>
 <div class="report-content">
-<h4 class="report-title">Relatório Anual 2024</h4>
-<p class="report-description">Balanço completo das atividades e resultados</p>
+<h4 class="report-title">Estatuto 2025 – 2026</h4>
+<p class="report-description">Documento oficial regulador das atividades e governança institucional</p>
 <a class="report-link" href="#">Baixar PDF</a>
 </div>
 </div>
 <div class="report-card">
-<div class="report-icon">💼</div>
+<div class="report-icon">📋</div>
 <div class="report-content">
-<h4 class="report-title">Demonstrativo Financeiro</h4>
-<p class="report-description">Receitas, despesas e investimentos</p>
-<a class="report-link" href="#">Baixar PDF</a>
-</div>
-</div>
-<div class="report-card">
-<div class="report-icon">📊</div>
-<div class="report-content">
-<h4 class="report-title">Impacto Social 2024</h4>
-<p class="report-description">Métricas e histórias de transformação</p>
-<a class="report-link" href="#">Baixar PDF</a>
+<h4 class="report-title">Atas de Reuniões Ordinárias 2025 – 2026</h4>
+<p class="report-description">Registro de deliberações e decisões das reuniões ordinárias</p>
+<a class="report-link" href="#">Abrir todas as atas</a>
 </div>
 </div>
 </div>
@@ -342,38 +300,7 @@
 <h2 class="section-title">Entre em Contato</h2>
 <p class="section-description">Estamos aqui para responder suas dúvidas</p>
 </div>
-<div class="contact-container">
-<div class="contact-info">
-<h3 class="contact-info-title">Informações de Contato</h3>
-<div class="contact-item">
-<div class="contact-icon">📍</div>
-<div>
-<div class="contact-label">Endereço</div>
-<div class="contact-value">Rua Dr. Cesário Mota Júnior, 112<br/>Santa Cecília, São Paulo - SP</div>
-</div>
-</div>
-<div class="contact-item">
-<div class="contact-icon">📞</div>
-<div>
-<div class="contact-label">Telefone</div>
-<div class="contact-value">(11) 2176-7000</div>
-</div>
-</div>
-<div class="contact-item">
-<div class="contact-icon">✉️</div>
-<div>
-<div class="contact-label">E-mail</div>
-<div class="contact-value">contato@dcprsantacasa.org.br</div>
-</div>
-</div>
-<div class="contact-item">
-<div class="contact-icon">🕐</div>
-<div>
-<div class="contact-label">Horário de Atendimento</div>
-<div class="contact-value">Segunda a Sexta: 8h às 18h<br/>Sábado: 8h às 12h</div>
-</div>
-</div>
-</div>
+<div class="contact-container-simple">
 <form class="form contact-form" id="contactForm">
 <div class="form-group">
 <label class="form-label" for="contactName">Nome Completo *</label>
@@ -393,9 +320,10 @@
 </div>
 <button class="btn btn-primary" type="submit">Enviar Mensagem</button>
 <div class="form-success" id="contactSuccess">
-                        ✓ Mensagem enviada com sucesso! Responderemos em breve.
-                    </div>
+✓ Mensagem enviada com sucesso! Responderemos em breve.
+</div>
 </form>
+</div>
 </div>
 </div>
 </section>
